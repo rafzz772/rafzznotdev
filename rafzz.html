@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>𝙍𝙖𝙛𝙯𝙯𝙊𝙛𝙛𝙘 - 𝙗𝙚𝙡𝙞 𝙟𝙖𝙨𝙖/𝙙𝙡𝙡 𝙙𝙞𝙨𝙞𝙣𝙞 𝙝𝙖𝙧𝙜𝙖𝙣𝙮𝙖 𝙢𝙪𝙧𝙖𝙝 𝙢𝙚𝙧𝙞𝙖𝙝</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff10" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: slideInUp 1s ease-out;
+        }
+        
+        .hero .tagline {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            animation: slideInUp 1s ease-out 0.2s both;
+        }
+        
+        .hero .description {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            animation: slideInUp 1s ease-out 0.4s both;
+        }
+        
+        .cta-button {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+            animation: slideInUp 1s ease-out 0.6s both;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6);
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #667eea;
+        }
+        
+        /* Sections */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: white;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Categories */
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .category-card {
+            background: white;
+            padding: 40px 20px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+        
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .category-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .category-card p {
+            color: #666;
+        }
+        
+        /* Products */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+        
+        .product-image {
+            height: 200px;
+            background: linear-gradient(45deg, #f0f2f5, #e9ecef);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .product-placeholder {
+            font-size: 4rem;
+            opacity: 0.5;
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #ff6b6b;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .product-info {
+            padding: 25px;
+        }
+        
+        .product-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        
+        .add-to-cart {
+            width: 100%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .add-to-cart:hover {
+            background: linear-gradient(45deg, #5a67d8, #6b5b95);
+            transform: translateY(-2px);
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .contact-item {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .contact-item h3 {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .contact-item p {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        .social-links {
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            margin: 0 15px;
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: #667eea;
+        }
+        
+        /* Animations */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .categories {
+                grid-template-columns: 1fr;
+            }
+            
+            .products {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">𝙍𝙖𝙛𝙯𝙯𝙊𝙛𝙛𝙘</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>𝙍𝙖𝙛𝙯𝙯𝙊𝙛𝙛𝙘</h1>
+            <p class="tagline">𝙗𝙚𝙡𝙞 𝙟𝙖𝙨𝙖/𝙙𝙡𝙡 𝙙𝙞𝙨𝙞𝙣𝙞 𝙝𝙖𝙧𝙜𝙖𝙣𝙮𝙖 𝙢𝙪𝙧𝙖𝙝 𝙢𝙚𝙧𝙞𝙖𝙝</p>
+            <p class="description">𝗥𝗔𝗙𝗭𝗭 𝗢𝗣𝗘𝗡
+
+𝙍𝙀𝙎𝙀𝙇𝙇𝙀𝙍 𝘾𝙍𝙀𝘼𝙏𝙀 𝙎𝗖
+𝙊𝙒𝙉 𝘾𝙍𝙀𝘼𝙏𝙀 𝙎𝘾
+𝙋𝙏 𝘾𝙍𝙀𝘼𝙏𝙀 𝙎𝘾
+𝙅𝘼𝙎𝘽𝙐𝙂
+𝙈𝙐𝙍𝘽𝙐𝙂 𝙎𝘾 𝙓𝙏𝙍𝘼𝙎𝙃/𝙑𝙊𝙍𝙓𝙕𝙀𝙀
+𝘼𝘿𝙈𝙄𝙉 𝙈𝙐𝙍𝘽𝙐𝙂 𝙓𝙏𝙍𝘼𝙎𝙃/𝙑𝙊𝙍𝙓𝙕𝙀𝙀
+𝙋𝙏 𝙈𝙐𝙍𝘽𝙐𝙂 𝙎𝘾 𝙓𝙏𝙍𝘼𝙎𝙃/𝙑𝙊𝙍𝙓𝙕𝙀𝙀
+𝙈𝙐𝙍𝙄𝘿 𝙎𝘾 𝘽𝙐𝙂 𝙏𝙀𝙇𝙀/𝙒𝘼
+𝙊𝙒𝙉 𝙈𝙐𝙍𝙄𝘿 𝙎𝘾 𝘽𝙐𝙂 𝙏𝙀𝙇𝙀/𝙒𝘼
+𝙋𝙏 𝙈𝙐𝙍𝙄𝘿 𝙎𝘾 𝘽𝙐𝙂 𝙏𝙀𝙇𝙀/𝙒𝘼
+𝙊𝙋𝙀𝙉 𝙋𝙊 𝙎𝘾 𝘽𝙐𝙂 𝙓𝙏𝙍𝘼𝙎𝙃/𝙑𝙊𝙍𝙓𝙕𝙀𝙀
+𝙎𝘾 𝙀𝙉𝘾 𝙉𝙊 𝙐𝙋
+𝙎𝘾 𝙀𝙉𝘾 𝙁𝙍𝙀𝙀 𝙐𝙋
+𝙎𝘾 𝙉𝙊 𝙀𝙉𝘾 𝙉𝙊 𝙐𝙋
+𝙎𝘾 𝙉𝙊 𝙀𝙉𝘾 𝙁𝙍𝙀𝙀 𝙐𝙋
+𝙎𝘾 𝙉𝙊 𝙀𝙉𝘾 𝙁𝙍𝙀𝙀 𝙐𝙋 𝙎𝙀𝙇𝘼𝙈𝘼𝙉𝙔𝘼
+𝙍𝙀𝙎𝙀𝙇𝙇𝙀𝙍 𝙎𝘾 𝙓𝙏𝙍𝘼𝙎𝙃
+𝙍𝙀𝙎𝙀𝙇𝙇𝙀𝙍 𝙎𝘾 𝙑𝙊𝙍𝙓𝙕𝙀𝙀
+𝙅𝘼𝙎𝘼 𝙋𝘼𝙎𝘼𝙉𝙂 𝙁𝙐𝙉𝘾
+𝙅𝘼𝙎𝘼 𝘽𝙐𝘼𝙏 𝙎𝘾 𝘽𝙐𝙂 𝙏𝙀𝙇𝙀
+𝙅𝘼𝙎𝘼 𝙁𝙄𝙓 𝙀𝙍𝙊𝙍 𝙎𝘾
+𝙅𝘼𝙎𝘼 𝙎𝙀𝙒𝘼 𝘽𝙊𝙏 𝙋𝙐𝙎𝙃 𝙆𝙊𝙉𝙏𝘼𝙆
+𝙅𝘼𝙎𝘼 𝙎𝙀𝙒𝘼 𝘽𝙊𝙏 𝘼𝙉𝙏𝙄𝙇𝙄𝙉𝙆
+𝙅𝘼𝙎𝘼 𝙎𝙀𝙒𝘼 𝘽𝙊𝙏 𝙅𝙋𝙈 𝙂𝘽
+𝙅𝘼𝙎𝘼 𝙎𝙀𝙒𝘼 𝘽𝙊𝙏 𝙈𝘿
+𝙅𝘼𝙎𝘼 𝙎𝙀𝙒𝘼 𝘽𝙊𝙏 𝙎𝙏𝙊𝙍𝙀 𝙁𝙍𝙀𝙀 𝙍𝙀𝙉𝘼𝙈𝙀! 
+𝙅𝘼𝙎𝘼 𝙋𝘼𝙎𝘼𝙉𝙂 𝘿𝘽 𝙎𝘾
+𝙅𝘼𝙎𝘼 𝙁𝙄𝙓 𝙋𝘼𝙄𝙍𝙄𝙉𝙂
+𝙋𝘼𝙉𝙀𝙇 1𝙂𝘽-𝙐𝙉𝙇𝙄
+𝙍𝙀𝙎𝙀𝙇𝙇𝙀𝙍 𝙋𝘼𝙉𝙀𝙇
+𝘼𝘿𝙈𝙄𝙉 𝙋𝘼𝙉𝙀𝙇
+𝙊𝙒𝙉𝙀𝙍 𝙋𝘼𝙉𝙀𝙇
+𝙋𝙏 𝙋𝘼𝙉𝙀𝙇
+𝙏𝘼𝙉𝙂𝘼𝙉 𝙆𝘼𝙉𝘼𝙉 𝙋𝘼𝙉𝙀𝙇
+
+𝗠𝗜𝗡𝗔𝗧/𝗔𝗧𝗔𝗨 𝗠𝗔𝗨 𝗧𝗔𝗡𝗬𝗔"? 𝗣𝗩 @rafzztzy</p>
+            <button class="cta-button" onclick="scrollToProducts()">
+                🛍️ Mulai Belanja
+            </button>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Kategori Produk</h2>
+            <p class="section-subtitle">Temukan berbagai pilihan produk berkualitas dalam kategori favorit Anda</p>
+            <div class="categories">
+                <div class="category-card">
+            <div class="category-icon">🛍️</div>
+            <h3>𝘼𝙇𝙇 𝘼𝙈𝘼𝙉</h3>
+            <p>Koleksi 𝘼𝙇𝙇 𝘼𝙈𝘼𝙉 terbaik</p>
+        </div><div class="category-card">
+            <div class="category-icon">🛍️</div>
+            <h3>𝘼𝙇𝙇 𝙈𝙐𝙍𝘼𝙃</h3>
+            <p>Koleksi 𝘼𝙇𝙇 𝙈𝙐𝙍𝘼𝙃 terbaik</p>
+        </div><div class="category-card">
+            <div class="category-icon">🛍️</div>
+            <h3>𝙒𝙊𝙍𝙆</h3>
+            <p>Koleksi 𝙒𝙊𝙍𝙆 terbaik</p>
+        </div><div class="category-card">
+            <div class="category-icon">🛍️</div>
+            <h3>𝘼𝙉𝙏𝙄 𝘼𝙈𝙋𝘼𝙎</h3>
+            <p>Koleksi 𝘼𝙉𝙏𝙄 𝘼𝙈𝙋𝘼𝙎 terbaik</p>
+        </div><div class="category-card">
+            <div class="category-icon">🛍️</div>
+            <h3>𝘿𝙇𝙇 𝙔𝙏𝙏𝘼 𝙇𝘼𝙃 𝙔𝘼</h3>
+            <p>Koleksi 𝘿𝙇𝙇 𝙔𝙏𝙏𝘼 𝙇𝘼𝙃 𝙔𝘼 terbaik</p>
+        </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="section" id="products" style="background: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title">Produk Unggulan</h2>
+            <p class="section-subtitle">Koleksi terbaik pilihan customer dengan kualitas premium</p>
+            <div class="products">
+                <div class="product-card">
+            <div class="product-image">
+                <div class="product-placeholder">📦</div>
+                <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+                <h3>𝗥𝗔𝗙𝗭𝗭 𝗢𝗣𝗘𝗡
+
+𝙍𝙀𝙎𝙀𝙇𝙇𝙀𝙍 𝘾𝙍𝙀𝘼𝙏𝙀 𝙎𝗖</h3>
+                <p class="product-price">Rp 5.000</p>
+                <button class="add-to-cart" onclick="window.open('https://t.me/rafzztzy', '_blank')">
+    <span>🛒</span> Pesan Sekarang
+</button>
+        </div><div class="product-card">
+            <div class="product-image">
+                <div class="product-placeholder">📦</div>
+                <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+                <h3>𝙊𝙒𝙉 𝘾𝙍𝙀𝘼𝙏𝙀 𝙎𝘾</h3>
+                <p class="product-price">Rp 10.000</p>
+                <button class="add-to-cart" onclick="window.open('https://t.me/rafzztzy', '_blank')">
+    <span>🛒</span> Pesan Sekarang
+</button>
+        </div><div class="product-card">
+            <div class="product-image">
+                <div class="product-placeholder">📦</div>
+                <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+                <h3>𝙋𝙏 𝘾𝙍𝙀𝘼𝙏𝙀 𝙎𝘾</h3>
+                <p class="product-price">Rp 15.000</p>
+                <button class="add-to-cart" onclick="window.open('https://t.me/rafzztzy', '_blank')">
+    <span>🛒</span> Pesan Sekarang
+</button>
+        </div><div class="product-card">
+            <div class="product-image">
+                <div class="product-placeholder">📦</div>
+                <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+                <h3>𝙅𝘼𝙎𝘽𝙐𝙂</h3>
+                <p class="product-price">Rp 2.000</p>
+                <button class="add-to-cart" onclick="window.open('https://t.me/rafzztzy', '_blank')">
+    <span>🛒</span> Pesan Sekarang
+</button>
+        </div><div class="product-card">
+            <div class="product-image">
+                <div class="product-placeholder">📦</div>
+                <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+                <h3>𝙈𝙐𝙍𝘽𝙐𝙂 𝙎𝘾 𝙓𝙏𝙍𝘼𝙎𝙃/𝙑𝙊𝙍𝙓𝙕𝙀𝙀</h3>
+                <p class="product-price">Rp 5.000</p>
+                <button class="add-to-cart" onclick="window.open('https://t.me/rafzztzy', '_blank')">
+    <span>🛒</span> Pesan Sekarang
+</button>
+            </div>
+        </div><div class="product-card">
+            <div class="product-image">
+                <div class="product-placeholder">📦</div>
+                <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+                <h3>𝘼𝘿𝙈𝙄𝙉 𝙈𝙐𝙍𝘽𝙐𝙂 𝙓𝙏𝙍𝘼𝙎𝙃/𝙑𝙊𝙍𝙓𝙕𝙀𝙀</h3>
+                <p class="product-price">Rp 10.000</p>
+                <button class="add-to-cart" onclick="window.        ('https://t.me/rafzztzy', '_blank')">
+    <span>🛒</span> Pesan Sekarang
+</button>
+            </div>
+        </div><div class="product-card">
+            <div class="product-image">
+                <div class="product-placeholder">📦</div>
+                <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+                <h3>𝙋𝙏 𝙈𝙐𝙍𝘽𝙐𝙂 𝙎𝘾 𝙓𝙏𝙍𝘼𝙎𝙃/𝙑𝙊𝙍𝙓𝙕𝙀𝙀</h3>
+                <p class="product-price">Rp 15.000</p>
+<button class="add-to-cart" onclick="window.open('https://t.me/rafzztzy', '_blank')">
+    <span>🛒</span> Pesan Sekarang
+</button>
+            </div>
+        </div><div class="product-card">
+            <div class="product-image">
+                <div class="product-placeholder">📦</div>
+                <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+                <h3>𝙈𝙐𝙍𝙄𝘿 𝙎𝘾 𝘽𝙐𝙂 𝙏𝙀𝙇𝙀/𝙒𝘼</h3>
+                <p class="product-price">Rp 10.000</p>
+             <button class="add-to-cart" onclick="window.open('https://t.me/rafzztzy', '_blank')">
+    <span>🛒</span> Pesan Sekarang
+</button>
+            </div>
+        </div><div class="product-card">
+            <div class="product-image">
+                <div class="product-placeholder">📦</div>
+                <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+                <h3>𝙊𝙒𝙉 𝙈𝙐𝙍𝙄𝘿 𝙎𝘾 𝘽𝙐𝙂 𝙏𝙀𝙇𝙀/𝙒𝘼</h3>
+                <p class="product-price">Rp 15.000</p>
+           <button class="add-to-cart" onclick="window.open('https://t.me/rafzztzy', '_blank')">
+    <span>🛒</span> Pesan Sekarang
+</button>
+            </div>
+        </div><div class="product-card">
+            <div class="product-image">
+                <div class="product-placeholder">📦</div>
+                <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+                <h3>𝙋𝙏 𝙈𝙐𝙍𝙄𝘿 𝙎𝘾 𝘽𝙐𝙂 𝙏𝙀𝙇𝙀/𝙒𝘼</h3>
+                <p class="product-price">Rp 20.000</p>
+                <button class="add-to-cart" onclick="window.open('https://t.me/rafzztzy', '_blank')">
+    <span>🛒</span> Pesan Sekarang
+</button>
+        </div>
+        </div><div class="product-card">
+            <div class="product-image">
+                <div class="product-placeholder">📦</div>
+                <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+                <h3>𝙊𝙋𝙀𝙉 𝙋𝙊 𝙎𝘾 𝘽𝙐𝙂 𝙓𝙏𝙍𝘼𝙎𝙃/𝙑𝙊𝙍𝙓𝙕𝙀𝙀</h3>
+                <p class="product-price">Rp 7.000</p>
+<button class="add-to-cart" onclick="window.open('https://t.me/rafzztzy', '_blank')">
+    <span>🛒</span> Pesan Sekarang
+</button>
+            </div>
+        </div><div class="product-card">
+            <div class="product-image">
+                <div class="product-placeholder">📦</div>
+                <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+                <h3>𝙎𝘾 𝙀𝙉𝘾 𝙉𝙊 𝙐𝙋</h3>
+                <p class="product-price">Rp 10.000</p>
+                <button class="add-to-cart" onclick="window.open('https://t.me/rafzztzy', '_blank')">
+    <span>🛒</span> Pesan Sekarang
+</button>
+            </div>
+        </div><div class="product-card">
+            <div class="product-image">
+                <div class="product-placeholder">📦</div>
+                <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+                <h3>𝙎𝘾 𝙀𝙉𝘾 𝙁𝙍𝙀𝙀 𝙐𝙋</h3>
+                <p class="product-price">Rp 20.000</p>
+               <button class="add-to-cart" onclick="window.open('https://t.me/rafzztzy', '_blank')">
+    <span>🛒</span> Pesan Sekarang
+</button>
+            </div>
+        </div><div class="product-card">
+            <div class="product-image">
+                <div class="product-placeholder">📦</div>
+                <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+                <h3>𝙎𝘾 𝙉𝙊 𝙀𝙉𝘾 𝙉𝙊 𝙐𝙋</h3>
+                <p class="product-price">Rp 25.000</p>
+            <button class="add-to-cart" onclick="window.open('https://t.me/rafzztzy', '_blank')">
+    <span>🛒</span> Pesan Sekarang
+</button>
+            </div>
+        </div><div class="product-card">
+            <div class="product-image">
+                <div class="product-placeholder">📦</div>
+                <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+                <h3>𝙎𝘾 𝙉𝙊 𝙀𝙉𝘾 𝙁𝙍𝙀𝙀 𝙐𝙋</h3>
+                <p class="product-price">Rp 35.000</p>
+                <button class="add-to-cart" onclick="window.open('https://t.me/rafzztzy', '_blank')">
+    <span>🛒</span> Pesan Sekarang
+</button>
+            </div>
+        </div><div class="product-card">
+            <div class="product-image">
+                <div class="product-placeholder">📦</div>
+                <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+                <h3>𝙎𝘾 𝙉𝙊 𝙀𝙉𝘾 𝙁𝙍𝙀𝙀 𝙐𝙋 𝙎𝙀𝙇𝘼𝙈𝘼𝙉𝙔𝘼</h3>
+                <p class="product-price">Rp 50.000</p>
+                <button class="add-to-cart" onclick="window.open('https://t.me/rafzztzy', '_blank')">
+    <span>🛒</span> Pesan Sekarang
+</button>
+            </div>
+        </div><div class="product-card">
+            <div class="product-image">
+                <div class="product-placeholder">📦</div>
+                <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+                <h3>𝙍𝙀𝙎𝙀𝙇𝙇𝙀𝙍 𝙎𝘾 𝙓𝙏𝙍𝘼𝙎𝙃</h3>
+                <p class="product-price">Rp 65.000</p>
+                <button class="add-to-cart" onclick="window.open('https://t.me/rafzztzy', '_blank')">
+    <span>🛒</span> Pesan Sekarang
+</button>
+            </div>
+        </div><div class="product-card">
+            <div class="product-image">
+                <div class="product-placeholder">📦</div>
+                <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+                <h3>𝙍𝙀𝙎𝙀𝙇𝙇𝙀𝙍 𝙎𝘾 𝙑𝙊𝙍𝙓𝙕𝙀𝙀</h3>
+                <p class="product-price">Rp 65.000</p>
+                <button class="add-to-cart" onclick="window.open('https://t.me/rafzztzy', '_blank')">
+    <span>🛒</span> Pesan Sekarang
+</button>
+            </div>
+        </div><div class="product-card">
+            <div class="product-image">
+                <div class="product-placeholder">📦</div>
+                <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+                <h3>𝙅𝘼𝙎𝘼 𝙋𝘼𝙎𝘼𝙉𝙂 𝙁𝙐𝙉𝘾</h3>
+                <p class="product-price">Rp 10.000</p>
+                <button class="add-to-cart" onclick="window.open('https://t.me/rafzztzy', '_blank')">
+    <span>🛒</span> Pesan Sekarang
+</button>
+            </div>
+        </div><div class="product-card">
+            <div class="product-image">
+                <div class="product-placeholder">📦</div>
+                <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+                <h3>𝙅𝘼𝙎𝘼 𝘽𝙐𝘼𝙏 𝙎𝘾 𝘽𝙐𝙂 𝙏𝙀𝙇𝙀</h3>
+                <p class="product-price">Rp 35.000</p>
+                <button class="add-to-cart" onclick="window.open('https://t.me/rafzztzy', '_blank')">
+    <span>🛒</span> Pesan Sekarang
+</button>
+            </div>
+        </div><div class="product-card">
+            <div class="product-image">
+                <div class="product-placeholder">📦</div>
+                <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+                <h3>𝙅𝘼𝙎𝘼 𝙁𝙄𝙓 𝙀𝙍𝙊𝙍 𝙎𝘾</h3>
+                <p class="product-price">Rp 7.000</p>
+                <button class="add-to-cart" onclick="window.open('https://t.me/rafzztzy', '_blank')">
+    <span>🛒</span> Pesan Sekarang
+</button>
+            </div>
+        </div><div class="product-card">
+            <div class="product-image">
+                <div class="product-placeholder">📦</div>
+                <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+                <h3>𝙅𝘼𝙎𝘼 𝙎𝙀𝙒𝘼 𝘽𝙊𝙏 𝙋𝙐𝙎𝙃 𝙆𝙊𝙉𝙏𝘼𝙆</h3>
+                <p class="product-price">Rp 5.000</p>
+                <button class="add-to-cart" onclick="window.open('https://t.me/rafzztzy', '_blank')">
+    <span>🛒</span> Pesan Sekarang
+</button>
+            </div>
+        </div><div class="product-card">
+            <div class="product-image">
+                <div class="product-placeholder">📦</div>
+                <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+                <h3>𝙅𝘼𝙎𝘼 𝙎𝙀𝙒𝘼 𝘽𝙊𝙏 𝘼𝙉𝙏𝙄𝙇𝙄𝙉𝙆</h3>
+                <p class="product-price">Rp 3.000</p>
+                <button class="add-to-cart" onclick="window.open('https://t.me/rafzztzy', '_blank')">
+    <span>🛒</span> Pesan Sekarang
+</button>
+            </div>
+        </div><div class="product-card">
+            <div class="product-image">
+                <div class="product-placeholder">📦</div>
+                <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+                <h3>𝙅𝘼𝙎𝘼 𝙎𝙀𝙒𝘼 𝘽𝙊𝙏 𝙅𝙋𝙈 𝙂𝘽</h3>
+                <p class="product-price">Rp 3.000</p>
+                <button class="add-to-cart" onclick="window.open('https://t.me/rafzztzy', '_blank')">
+    <span>🛒</span> Pesan Sekarang
+</button>
+            </div>
+        </div><div class="product-card">
+            <div class="product-image">
+                <div class="product-placeholder">📦</div>
+                <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+                <h3>𝙅𝘼𝙎𝘼 𝙎𝙀𝙒𝘼 𝘽𝙊𝙏 𝙈𝘿</h3>
+                <p class="product-price">Rp 3.000</p>
+                <button class="add-to-cart" onclick="window.open('https://t.me/rafzztzy', '_blank')">
+    <span>🛒</span> Pesan Sekarang
+</button>
+            </div>
+        </div><div class="product-card">
+            <div class="product-image">
+                <div class="product-placeholder">📦</div>
+                <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+                <h3>𝙅𝘼𝙎𝘼 𝙎𝙀𝙒𝘼 𝘽𝙊𝙏 𝙎𝙏𝙊𝙍𝙀 𝙁𝙍𝙀𝙀 𝙍𝙀𝙉𝘼𝙈𝙀!</h3>
+                <p class="product-price">Rp 4.000</p>
+                <button class="add-to-cart" onclick="window.open('https://t.me/rafzztzy', '_blank')">
+    <span>🛒</span> Pesan Sekarang
+</button>
+            </div>
+        </div><div class="product-card">
+            <div class="product-image">
+                <div class="product-placeholder">📦</div>
+                <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+                <h3>𝙅𝘼𝙎𝘼 𝙋𝘼𝙎𝘼𝙉𝙂 𝘿𝘽 𝙎𝘾</h3>
+                <p class="product-price">Rp 10.000</p>
+                <button class="add-to-cart" onclick="window.open('https://t.me/rafzztzy', '_blank')">
+    <span>🛒</span> Pesan Sekarang
+</button>
+            </div>
+        </div><div class="product-card">
+            <div class="product-image">
+                <div class="product-placeholder">📦</div>
+                <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+                <h3>𝙅𝘼𝙎𝘼 𝙁𝙄𝙓 𝙋𝘼𝙄𝙍𝙄𝙉𝙂</h3>
+                <p class="product-price">Rp 10.000</p>
+                <button class="add-to-cart" onclick="window.open('https://t.me/rafzztzy', '_blank')">
+    <span>🛒</span> Pesan Sekarang
+</button>
+            </div>
+        </div><div class="product-card">
+            <div class="product-image">
+                <div class="product-placeholder">📦</div>
+                <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+                <h3>𝙋𝘼𝙉𝙀𝙇 1𝙂𝘽-𝙐𝙉𝙇𝙄</h3>
+                <p class="product-price">Rp 3.000</p>
+                <button class="add-to-cart" onclick="window.open('https://t.me/rafzztzy', '_blank')">
+    <span>🛒</span> Pesan Sekarang
+</button>
+            </div>
+        </div><div class="product-card">
+            <div class="product-image">
+                <div class="product-placeholder">📦</div>
+                <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+                <h3>𝙍𝙀𝙎𝙀𝙇𝙇𝙀𝙍 𝙋𝘼𝙉𝙀𝙇</h3>
+                <p class="product-price">Rp 5.000</p>
+                <button class="add-to-cart" onclick="window.open('https://t.me/rafzztzy', '_blank')">
+    <span>🛒</span> Pesan Sekarang
+</button>
+            </div>
+        </div><div class="product-card">
+            <div class="product-image">
+                <div class="product-placeholder">📦</div>
+                <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+                <h3>𝘼𝘿𝙈𝙄𝙉 𝙋𝘼𝙉𝙀𝙇</h3>
+                <p class="product-price">Rp 12.000</p>
+                <button class="add-to-cart" onclick="window.open('https://t.me/rafzztzy', '_blank')">
+    <span>🛒</span> Pesan Sekarang
+</button>
+            </div>
+        </div><div class="product-card">
+            <div class="product-image">
+                <div class="product-placeholder">📦</div>
+                <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+                <h3>𝙊𝙒𝙉𝙀𝙍 𝙋𝘼𝙉𝙀𝙇</h3>
+                <p class="product-price">Rp 15.000</p>
+                <button class="add-to-cart" onclick="window.open('https://t.me/rafzztzy', '_blank')">
+    <span>🛒</span> Pesan Sekarang
+</button>
+            </div>
+        </div><div class="product-card">
+            <div class="product-image">
+                <div class="product-placeholder">📦</div>
+                <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+                <h3>𝙋𝙏 𝙋𝘼𝙉𝙀𝙇</h3>
+                <p class="product-price">Rp 17.000</p>
+                <button class="add-to-cart" onclick="window.open('https://t.me/rafzztzy', '_blank')">
+    <span>🛒</span> Pesan Sekarang
+</button>
+            </div>
+        </div><div class="product-card">
+            <div class="product-image">
+                <div class="product-placeholder">📦</div>
+                <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+                <h3>𝙏𝘼𝙉𝙂𝘼𝙉 𝙆𝘼𝙉𝘼𝙉 𝙋𝘼𝙉𝙀𝙇</h3>
+                <p class="product-price">Rp 20.000</p>
+                <button class="add-to-cart" onclick="window.open('https://t.me/rafzztzy', '_blank')">
+    <span>🛒</span> Pesan Sekarang
+</button>
+            </div>
+        </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Hubungi Kami</h2>
+            <p class="section-subtitle">Kami siap melayani Anda dengan sepenuh hati</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <h3>WhatsApp</h3>
+                    <p>+6285709153339</p>
+                    <p>Chat langsung untuk konsultasi</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">🕒</div>
+                    <h3>Jam Operasional</h3>
+                    <p>12:00-21:00 𝙒𝙄𝘽</p>
+                    <p>Siap melayani Anda</p>
+                </div>
+              </div>
+       </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <h3>𝙍𝙖𝙛𝙯𝙯𝙊𝙛𝙛𝙘</h3>
+            <p>𝙗𝙚𝙡𝙞 𝙟𝙖𝙨𝙖/𝙙𝙡𝙡 𝙙𝙞𝙨𝙞𝙣𝙞 𝙝𝙖𝙧𝙜𝙖𝙣𝙮𝙖 𝙢𝙪𝙧𝙖𝙝 𝙢𝙚𝙧𝙞𝙖𝙝</p>
+            <div class="social-links">
+                <a href="https://wa.me/6285709153339" target="_blank">📱</a>
+                <a href="https://instagram.com/@gada" target="_blank">📸</a>
+            </div>
+            <p>&copy; 2025 𝙍𝙖𝙛𝙯𝙯𝙊𝙛𝙛𝙘. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        function scrollToProducts() {
+            document.getElementById('products').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+        
+        // Order product function
+        function orderProduct(productName, price) {
+            const formattedPrice = parseInt(price).toLocaleString('id-ID');
+            const message = `Halo! Saya tertarik dengan produk *${productName}* (Rp ${formattedPrice}) dari 𝙍𝙖𝙛𝙯𝙯𝙊𝙛𝙛𝙘.
+
+Bisa tolong berikan informasi lebih detail mengenai:
+- Spesifikasi produk
+- Ketersediaan stok
+- Proses pemesanan
+
+Terima kasih! 🙏`;
+            
+            window.open(`https://wa.me/6285709153339?text=${encodeURIComponent(message)}`, '_blank');
+        }
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+        
+        // Simple loading animation
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease-in-out';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
